@@ -2,10 +2,12 @@
 ```
 Peter Niederwieser, Leonard Brünings, The Spock Framework Team Version 1.3
 ```
+
 Table of Contents
 =================
 
    * [<a href="http://spockframework.github.io/spock/docs" rel="nofollow">Spock Framework Reference Documentation</a>](#spock-framework-reference-documentation)
+   * [Table of Contents](#table-of-contents)
       * [Introduction [Spock 介绍]](#introduction-spock-介绍)
       * [Getting Started [起步]](#getting-started-起步)
          * [Spock Web Console [Spock 在线控制台]](#spock-web-console-spock-在线控制台)
@@ -67,7 +69,7 @@ Table of Contents
             * [Verification of Interactions [交互的验证]](#verification-of-interactions-交互的验证)
             * [Invocation Order [调用顺序]](#invocation-order-调用顺序-1)
             * [Mocking Classes [模拟类]](#mocking-classes-模拟类)
-         * [Stubbing [桩]]](#stubbing-桩)
+         * [Stubbing [桩]](#stubbing-桩)
             * [Returning Fixed Values [返回固定值]](#returning-fixed-values-返回固定值)
             * [Returning Sequences of Values [返回值序列]](#returning-sequences-of-values-返回值序列)
             * [Computing Return Values [计算返回值]](#computing-return-values-计算返回值)
@@ -1505,7 +1507,7 @@ then:
 CGLIB 从3.2.0开始支持Java 8
 ```
 
-### Stubbing [桩]]
+### Stubbing [桩]
 
 Stubbing是让协作者以某种方式响应方法调用的行为。
 在对方法进行stubbing时，你不关心该方法的调用次数和是否被调用。
