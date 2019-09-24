@@ -2,78 +2,82 @@
 ```
 Peter Niederwieser, Leonard Brünings, The Spock Framework Team Version 1.3
 ```
-
 Table of Contents
 =================
 
    * [<a href="http://spockframework.github.io/spock/docs" rel="nofollow">Spock Framework Reference Documentation</a>](#spock-framework-reference-documentation)
-   * [Table of Contents](#table-of-contents)
-      * [Introduction 【Spock 介绍】](#introduction-spock-介绍)
-      * [Getting Started](#getting-started)
-         * [Spock Web Console【Spock 在线控制台】](#spock-web-consolespock-在线控制台)
-         * [Spock Example Project【Spock 样例工程】](#spock-example-project-spock-样例工程)
+      * [Introduction [Spock 介绍]](#introduction-spock-介绍)
+      * [Getting Started [起步]](#getting-started-起步)
+         * [Spock Web Console [Spock 在线控制台]](#spock-web-console-spock-在线控制台)
+         * [Spock Example Project [Spock 样例工程]](#spock-example-project-spock-样例工程)
       * [Spock Primer [Spock 进阶]](#spock-primer-spock-进阶)
-         * [Terminology 术语](#terminology-术语)
-         * [Imports 导入](#imports-导入)
+         * [Terminology [术语]](#terminology-术语)
+         * [Imports [导入]](#imports-导入)
          * [Specification](#specification)
-         * [Fields](#fields)
-         * [Fixture Methods](#fixture-methods)
-            * [Invocation Order](#invocation-order)
-         * [Feature Methods](#feature-methods)
-            * [Blocks](#blocks)
-         * [Helper Methods](#helper-methods)
-         * [Using with for expectations](#using-with-for-expectations)
-         * [Using verifyAll to assert multiple expectations together](#using-verifyall-to-assert-multiple-expectations-together)
-         * [Specifications as Documentation](#specifications-as-documentation)
-         * [Extensions](#extensions)
-         * [Comparison to JUnit](#comparison-to-junit)
-      * [Data Driven Testing 数据驱动测试](#data-driven-testing-数据驱动测试)
-         * [Introduction](#introduction)
-         * [Data Tables 数据表格](#data-tables-数据表格)
-         * [Isolated Execution of Iterations](#isolated-execution-of-iterations)
-         * [Sharing of Objects between Iterations](#sharing-of-objects-between-iterations)
-         * [Syntactic Variations](#syntactic-variations)
-         * [Reporting of Failures](#reporting-of-failures)
-         * [Method Unrolling](#method-unrolling)
-         * [Data Pipes](#data-pipes)
-         * [Multi-Variable Data Pipes](#multi-variable-data-pipes)
-         * [Data Variable Assignment](#data-variable-assignment)
-         * [Combining Data Tables, Data Pipes, and Variable Assignments](#combining-data-tables-data-pipes-and-variable-assignments)
-         * [Number of Iterations](#number-of-iterations)
-         * [Closing of Data Providers](#closing-of-data-providers)
-         * [More on Unrolled Method Names](#more-on-unrolled-method-names)
-      * [Interaction Based Testing 基于交互的测试](#interaction-based-testing-基于交互的测试)
-         * [Creating Mock Objects 创建Mock对象](#creating-mock-objects-创建mock对象)
-         * [Default Behavior of Mock Objects](#default-behavior-of-mock-objects)
-         * [Injecting Mock Objects into Code Under Specification](#injecting-mock-objects-into-code-under-specification)
-         * [Mocking](#mocking)
-            * [Interactions](#interactions)
-            * [Cardinality](#cardinality)
-            * [Target Constraint](#target-constraint)
-            * [Method Constraint](#method-constraint)
-            * [Argument Constraints](#argument-constraints)
-            * [Matching Any Method Call](#matching-any-method-call)
-            * [Strict Mocking](#strict-mocking)
-            * [Where to Declare Interactions](#where-to-declare-interactions)
-            * [Declaring Interactions at Mock Creation Time](#declaring-interactions-at-mock-creation-time)
-            * [Grouping Interactions with Same Target](#grouping-interactions-with-same-target)
-            * [Mixing Interactions and Conditions](#mixing-interactions-and-conditions)
-            * [Explicit Interaction Blocks](#explicit-interaction-blocks)
-            * [Scope of Interactions](#scope-of-interactions)
-            * [Verification of Interactions](#verification-of-interactions)
-            * [Invocation Order](#invocation-order-1)
-            * [Mocking Classes](#mocking-classes)
-         * [Stubbing](#stubbing)
-            * [Returning Fixed Values](#returning-fixed-values)
-            * [Returning Sequences of Values](#returning-sequences-of-values)
-            * [Computing Return Values](#computing-return-values)
-            * [Performing Side Effects](#performing-side-effects)
-            * [Chaining Method Responses](#chaining-method-responses)
-         * [Combining Mocking and Stubbing](#combining-mocking-and-stubbing)
-         * [Other Kinds of Mock Objects](#other-kinds-of-mock-objects)
+         * [Fields [变量字段]](#fields-变量字段)
+         * [Fixture Methods [固定方法]](#fixture-methods-固定方法)
+            * [Invocation Order [调用顺序]](#invocation-order-调用顺序)
+         * [Feature Methods [功能方法]](#feature-methods-功能方法)
+            * [Blocks [块]](#blocks-块)
+         * [Helper Methods [辅助方法]](#helper-methods-辅助方法)
+         * [Using with for expectations [使用 with 处理期望]](#using-with-for-expectations-使用-with-处理期望)
+         * [Using verifyAll to assert multiple expectations together [使用verifyAll批量断言]](#using-verifyall-to-assert-multiple-expectations-together-使用verifyall批量断言)
+         * [Specifications as Documentation [Specifications 文档描述]](#specifications-as-documentation-specifications-文档描述)
+         * [Extensions [扩展]](#extensions-扩展)
+         * [Comparison to JUnit [与 JUnit 比较]](#comparison-to-junit-与-junit-比较)
+      * [Data Driven Testing [数据驱动测试]](#data-driven-testing-数据驱动测试)
+         * [Introduction [介绍]](#introduction-介绍)
+         * [Data Tables [数据表]](#data-tables-数据表)
+         * [Isolated Execution of Iterations [迭代隔离执行]](#isolated-execution-of-iterations-迭代隔离执行)
+         * [Sharing of Objects between Iterations [迭代共享对象]](#sharing-of-objects-between-iterations-迭代共享对象)
+         * [Syntactic Variations [变量语法糖]](#syntactic-variations-变量语法糖)
+         * [Reporting of Failures [报告失败]](#reporting-of-failures-报告失败)
+         * [Method Unrolling [@Unroll 注解方法]](#method-unrolling-unroll-注解方法)
+         * [Data Pipes [数据管道]](#data-pipes-数据管道)
+         * [Multi-Variable Data Pipes [多变量数据管道]](#multi-variable-data-pipes-多变量数据管道)
+         * [Data Variable Assignment [数据变量赋值]](#data-variable-assignment-数据变量赋值)
+         * [Combining Data Tables, Data Pipes, and Variable Assignments [数据表、数据管道、变量赋值组合]](#combining-data-tables-data-pipes-and-variable-assignments-数据表数据管道变量赋值组合)
+         * [Number of Iterations [迭代次数]](#number-of-iterations-迭代次数)
+         * [Closing of Data Providers [关闭数据提供者]](#closing-of-data-providers-关闭数据提供者)
+         * [More on Unrolled Method Names [Unrolled 方法名]](#more-on-unrolled-method-names-unrolled-方法名)
+      * [Interaction Based Testing [基于交互的测试]](#interaction-based-testing-基于交互的测试)
+         * [Creating Mock Objects [创建Mock对象]](#creating-mock-objects-创建mock对象)
+         * [Default Behavior of Mock Objects [Mock对象的默认行为]](#default-behavior-of-mock-objects-mock对象的默认行为)
+         * [Injecting Mock Objects into Code Under Specification [注入Mock对象]](#injecting-mock-objects-into-code-under-specification-注入mock对象)
+         * [Mocking [模拟]](#mocking-模拟)
+            * [Interactions [交互]](#interactions-交互)
+            * [Cardinality [交互的基数]](#cardinality-交互的基数)
+            * [Target Constraint [目标约束]](#target-constraint-目标约束)
+            * [Method Constraint [方法约束]](#method-constraint-方法约束)
+            * [Argument Constraints [参数约束]](#argument-constraints-参数约束)
+               * [Equality Constraint [等式约束]](#equality-constraint-等式约束)
+               * [Hamcrest 约束](#hamcrest-约束)
+               * [Wildcard Constraint [通配符约束]](#wildcard-constraint-通配符约束)
+               * [Code Constraint [代码约束]](#code-constraint-代码约束)
+               * [Negating Constraint [否定约束]](#negating-constraint-否定约束)
+               * [Type Constraint [类型约束]](#type-constraint-类型约束)
+            * [Matching Any Method Call [匹配任何方法调用]](#matching-any-method-call-匹配任何方法调用)
+            * [Strict Mocking [严格模拟]](#strict-mocking-严格模拟)
+            * [Where to Declare Interactions [在哪定义交互]](#where-to-declare-interactions-在哪定义交互)
+            * [Declaring Interactions at Mock Creation Time [创建Mock时定义交互]](#declaring-interactions-at-mock-creation-time-创建mock时定义交互)
+            * [Grouping Interactions with Same Target [对相同目标的交互进行分组]](#grouping-interactions-with-same-target-对相同目标的交互进行分组)
+            * [Mixing Interactions and Conditions [混合 交互与条件]](#mixing-interactions-and-conditions-混合-交互与条件)
+            * [Explicit Interaction Blocks [显式交互块]](#explicit-interaction-blocks-显式交互块)
+            * [Scope of Interactions [交互作用范围]](#scope-of-interactions-交互作用范围)
+            * [Verification of Interactions [交互的验证]](#verification-of-interactions-交互的验证)
+            * [Invocation Order [调用顺序]](#invocation-order-调用顺序-1)
+            * [Mocking Classes [模拟类]](#mocking-classes-模拟类)
+         * [Stubbing [桩]]](#stubbing-桩)
+            * [Returning Fixed Values [返回固定值]](#returning-fixed-values-返回固定值)
+            * [Returning Sequences of Values [返回值序列]](#returning-sequences-of-values-返回值序列)
+            * [Computing Return Values [计算返回值]](#computing-return-values-计算返回值)
+            * [Performing Side Effects [执行的副作用]](#performing-side-effects-执行的副作用)
+            * [Chaining Method Responses [方法响应链]](#chaining-method-responses-方法响应链)
+         * [Combining Mocking and Stubbing [模拟和桩的组合]](#combining-mocking-and-stubbing-模拟和桩的组合)
+         * [Other Kinds of Mock Objects [其他 Mock 对象]](#other-kinds-of-mock-objects-其他-mock-对象)
             * [Stubs](#stubs)
             * [Spies](#spies)
-            * [Partial Mocks](#partial-mocks)
+            * [Partial Mocks [部分 Mocks]](#partial-mocks-部分-mocks)
          * [Groovy Mocks](#groovy-mocks)
             * [Mocking Dynamic Methods](#mocking-dynamic-methods)
             * [Mocking All Instances of a Type](#mocking-all-instances-of-a-type)
@@ -83,35 +87,61 @@ Table of Contents
             * [A la Carte Mocks](#a-la-carte-mocks)
             * [Detecting Mock Objects](#detecting-mock-objects)
          * [Further Reading](#further-reading)
-      * [Extensions](#extensions-1)
-         * [Spock Configuration File](#spock-configuration-file)
-         * [Built-In Extensions](#built-in-extensions)
-         * [Third-Party Extensions](#third-party-extensions)
+      * [Extensions [扩展机制]](#extensions-扩展机制)
+         * [Spock Configuration File [Spock 配置文件]](#spock-configuration-file-spock-配置文件)
+         * [Built-In Extensions [内建扩展]](#built-in-extensions-内建扩展)
+            * [Ignore](#ignore)
+            * [IgnoreRest](#ignorerest)
+            * [IgnoreIf](#ignoreif)
+            * [Requires](#requires)
+            * [PendingFeature](#pendingfeature)
+            * [Stepwise](#stepwise)
+            * [Timeout](#timeout)
+            * [Retry](#retry)
+            * [Use](#use)
+            * [ConfineMetaClassChanges](#confinemetaclasschanges)
+            * [RestoreSystemProperties](#restoresystemproperties)
+            * [AutoAttach](#autoattach)
+            * [AutoCleanup](#autocleanup)
+            * [Title and Narrative](#title-and-narrative)
+            * [See](#see)
+            * [Issue](#issue)
+            * [Subject](#subject)
+            * [Rule](#rule)
+            * [ClassRule](#classrule)
+            * [Include and Exclude](#include-and-exclude)
+            * [Optimize Run Order](#optimize-run-order)
+            * [Report Log](#report-log)
+         * [Third-Party Extensions [第三方扩展]](#third-party-extensions-第三方扩展)
          * [Writing Custom Extensions](#writing-custom-extensions)
+            * [Global Extensions](#global-extensions)
+            * [Annotation Driven Local Extensions](#annotation-driven-local-extensions)
+            * [Configuration Objects](#configuration-objects)
+            * [Interceptors [拦截器]](#interceptors-拦截器)
       * [Modules](#modules)
-         * [Guice Module](#guice-module)
-         * [Spring Module](#spring-module)
-         * [Tapestry Module](#tapestry-module)
-         * [Unitils Module](#unitils-module)
-         * [Grails Module](#grails-module)
+         * [Guice Module [与Guice IoC容器集成]](#guice-module-与guice-ioc容器集成)
+         * [Spring Module  [Spring 模块 ]](#spring-module--spring-模块)
+         * [Tapestry Module [与Tapestry5 IoC容器集成]](#tapestry-module-与tapestry5-ioc容器集成)
+         * [Unitils Module [与Unitils库集成]](#unitils-module-与unitils库集成)
+         * [Grails Module [Grails 模块]](#grails-module-grails-模块)
       * [Release Notes](#release-notes)
       * [Migration Guide](#migration-guide)
 
-## Introduction 【Spock 介绍】
+## Introduction [Spock 介绍]
 Spock 是运用于 Java and Groovy 应用程序的测试框架。
 它美丽而富有表现力的规范说明语言使得它从众多的测试框架中脱颖而出。
 由于基于JUnit执行器，使得Spock与大多数IDE，构建工具和持续集成服务器保持兼容。
 Spock的灵感来自JUnit，jMock，RSpec，Groovy，Scala，Vulcans 和其他一些优秀的框架。
 
-## Getting Started
+## Getting Started [起步]
 这部分会展示 Spock 如何起步，可以说是比较简单的。
 
-### Spock Web Console【Spock 在线控制台】
+### Spock Web Console [Spock 在线控制台]
 [Spock Web Console](http://meetspock.appspot.com/) 是一个在线 查看、编辑、运行、发布 Spock 测试脚本的网站，
 它是一个不用做任何付出就能玩转Spock的完美场所。
 所以赶紧去运行一下 [“Hello, Spock!” ](http://meetspock.appspot.com/edit/9001)吧！
 
-### Spock Example Project【Spock 样例工程】
+### Spock Example Project [Spock 样例工程]
 如果想在本地环境尝试 Spock，可以从 GitHub 下载[ “ Spock Example Project”](https://github.com/spockframework/spock-example)，
 它无需你做任何的设置，就可用使用 Ant，Gradle和Maven运行。
 使用一个简单的命令就可以使用Gradle启动或者在Eclipse和IDEA中运行。具体可以查看README文件中的详细介绍.
@@ -130,14 +160,14 @@ Spock的灵感来自JUnit，jMock，RSpec，Groovy，Scala，Vulcans 和其他�
 
 [单元测试](http://en.wikipedia.org/wiki/Unit_testing)
 
-### Terminology 术语
+### Terminology [术语]
 首先让我们来做一些定义：Spock 让你编写 描述性脚本 来描述 某个被测系统的期望功能（属性、性质）。
 被测系统可以是一个类或一个应用，也被称为 基于描述的系统（system under specification or SUS）。
 对于一个功能的描述从SUS及其协作者的特定快照开始;此快照被称为这个功能的 fixture。
 
 以下部分将引导你完成可能组成Spock描述脚本的所有构建块。典型描述性脚本一般仅使用它们的子集。
 
-### Imports 导入
+### Imports [导入]
 ```java
 import spock.lang.*
 ```
@@ -152,19 +182,19 @@ class MyFirstSpecification extends Specification {
   // helper methods
 }
 ```
-一个测试描述对应于一个 Groovy 类，这个类必须继承 spock.lang.Specification。
+一个 Specification 对应于一个 Groovy 类，这个类必须继承 spock.lang.Specification。
 测试描述的按照它所描述的功能来命名。
 例如：CustomerSpec, H264VideoPlayback, and ASpaceshipAttackedFromTwoSides，
 对于一个测试描述这些都是合理的命名。
 
 测试描述类通常包含许多对于编写描述性脚本有用的方法，同时它也指明了 JUnit 如何 Sputnik 来运行描述性脚本。
 Sputnik 使得 Spock specifications 可以运行于 大多数现代 Java 集成开发环境 和 构建工具。
-### Fields
+
+### Fields [变量字段]
 ```groovy
 def obj = new ClassUnderSpecification()
 def coll = new Collaborator()
 ```
-
 ```groovy
 @Shared res = new VeryExpensiveResource()
 ```
@@ -177,7 +207,7 @@ static final PI = 3.141592654
 ```
 静态字段应用只用于常量，共享字段是最优的选择，因为他们对共享语法的定义更明确。
 
-### Fixture Methods
+### Fixture Methods [固定方法]
 ```groovy
 def setupSpec() {}    // runs once -  before the first feature method
 def setup() {}        // runs before every feature method
@@ -192,7 +222,7 @@ def cleanupSpec() {}  // runs once -  after the last feature method
 有时候，多个功能方法共享一个 Fixture 是有意义的，通过共享字段和setupSpec()、cleanupSpec() 方法的结合来实现。
 注意，setupSpec() 和 cleanupSpec() 方法中不能引用实例字段，除它们非被 @Shared 标记。
 
-#### Invocation Order
+#### Invocation Order [调用顺序]
 如果在子类中重写了 setUp()方法，父类的setup（）将在子类的setup（）之前运行。
 而 cleanup() 则是相反的，子类cleanup()将先执行。
 setupSpec() 和 setUp()一致，cleanupSpec()和cleanup()一致。
@@ -209,7 +239,7 @@ super.cleanup
 sub.cleanupSpec
 super.cleanupSpec
 
-### Feature Methods
+### Feature Methods [功能方法]
 ```groovy
 def "pushing an element on the stack"() {
   // blocks go here (块结构)
@@ -226,7 +256,7 @@ Feature methods 是 specification 的核心。它描述了你期望的系统功�
 
 第一个和第四个阶段是可选的，除非是在交互式Feature Method中，否则第二、三个阶段一般都存在，并且有可能出现不止一次。
 
-#### Blocks 
+#### Blocks [块]
 Spock 内置支持 Feature method 的每个阶段。为此，Feature method 被结构化为 多个块结构。
 块结构以一个标签开始，并延伸到下一个块结构开始或方法的结尾。
 有6种块结构：
@@ -463,7 +493,7 @@ def "computing the maximum of two numbers"() {
 虽然 where块 是在最后声明的，但是是在包含它的 feature method 运行之前评估的。
 where块 会在数据驱动测试章节中进一步说明。
 
-### Helper Methods
+### Helper Methods [辅助方法]
 
 有时，feature method 会变大而包含大量重复代码。在这种情况下，引入一个或多个辅助方法是有意义的。
 辅助方法的两个好选择是 setup/cleanup 逻辑 和 复杂条件。前者比较简单，让我们来看看复杂条件：
@@ -532,7 +562,7 @@ assert pc.clockRate >= 2333
 请注意，使用fixture和helper方法会增加 feature methods 之间的耦合。
 如果重用过多或错误的代码，specifications 会变得难以维护和修改。
 
-### Using with for expectations
+### Using with for expectations [使用 with 处理期望]
 
 作为上述辅助方法的替代，可以使用with（target，closure）方法与待校验对象上进行交互，这在 then 和 expect 块中特别有用。
 ```groovy
@@ -568,7 +598,7 @@ with(service) {
 ```
 有时IDE会很难确定目标的类型，在这种情况下，可以使用 with(target，type，closure) 来手动指定目标类型。
 
-### Using verifyAll to assert multiple expectations together
+### Using verifyAll to assert multiple expectations together [使用verifyAll批量断言]
 
 一般情况下，在第一次断言失败时我们就认为测试失败。
 但有时候，在测试失败之前收集更多断言的失败信息是有帮助的，这种行为也称为（soft assertions）软断言。
@@ -598,7 +628,7 @@ verifyAll 也可以不用绑定验证目标：
 
 verifyAll 与 with 一样，也可以选择为IDE定义类型提示。
 
-### Specifications as Documentation
+### Specifications as Documentation [Specifications 文档描述]
 
 精心编写的 Specifications 是宝贵的信息来源。
 特别是高规格的 Specifications 不仅仅是开发人员（架构师，领域专家，客户等），而是面向更广泛受众的。
@@ -635,7 +665,7 @@ then: "the account's balance is $10"
 块描述不仅存在于源代码中，还可用于Spock运行时。
 规划好块描述能够增强诊断信息，以及所有利益相关者具有共同理解的文本报告。
 
-### Extensions
+### Extensions [扩展]
 正如我们所看到的，Spock提供了许多用于编写 Specification 的功能。
 除了这些功能，Spock还提供了一种基于拦截的扩展机制。
 扩展由称为指令（directives）的注释激活。目前，Spock支持以下指令注释：
@@ -655,7 +685,7 @@ then: "the account's balance is $10"
 
 [Extensions](#extensions-1)章节讲解了如何自定义 指令注解 和 扩展。
 
-### Comparison to JUnit
+### Comparison to JUnit [与 JUnit 比较]
 
 虽然Spock使用不同的术语，但它的许多概念和特性都受到JUnit的启发。
 以下是一个粗略的比较：
@@ -672,11 +702,11 @@ then: "the account's balance is $10"
 | Exception condition | @Test(expected=…​)                  |
 | Interaction         | Mock expectation (e.g. in Mockito) |
 
-## Data Driven Testing 数据驱动测试
+## Data Driven Testing [数据驱动测试]
 通常，我们会使用不同的输入和预期结果，多次运行相同的测试代码。 
 DDT也成为了Spock最重要的功能之一。
 
-### Introduction
+### Introduction [介绍]
 假设我们要指定Math.max方法的行为：
 ```groovy
 class MathSpec extends Specification {
@@ -710,7 +740,7 @@ class MathSpec extends Specification {
 我们已经完成了测试逻辑，但仍然需要提供数据值。
 这是在where：块中完成的，它始终位于方法的末尾。在最简单（也是最常见）的情况下，where：块会包含数据表。
 
-### Data Tables 数据表格
+### Data Tables [数据表]
 
 数据表是使用一组固定数据集来运行 feature method 的便捷方法：
 ```groovy
@@ -740,12 +770,12 @@ a | _
 0 | _
 ```
 
-### Isolated Execution of Iterations
+### Isolated Execution of Iterations [迭代隔离执行]
 
 迭代与单独隔离执行 feature method 的方式相同，每次迭代彼此隔离，都会获得自己的规范类实例，
 并且将分别在每次迭代之前和之后调用setup和cleanup方法。
 
-### Sharing of Objects between Iterations
+### Sharing of Objects between Iterations [迭代共享对象]
 
 对象必须保存在@Shared或静态字段中，才能在迭代之间共享。
 
@@ -756,7 +786,7 @@ a | _
 如果你认为这是一个问题，请考虑将每个方法放入一个单独的 Specification 中，这些 Specifications 可以保存在同一个文件中。
 这样可以以某些样板代码为代价实现更好的隔离。
 
-### Syntactic Variations 
+### Syntactic Variations [变量语法糖]
 
 以前的代码可以通过几种方式进行调整。
 首先，由于where：块已经声明了所有数据变量，因此可以省略方法参数。
@@ -777,7 +807,7 @@ class MathSpec extends Specification {
 }
 ```
 
-### Reporting of Failures 
+### Reporting of Failures [报告失败]
 
 假设max方法的实现有一个缺陷，其中一个迭代会失败：
 ```md
@@ -794,7 +824,7 @@ Math.max(a, b) == c
 在我们的示例中，不难发现它是第二次失败的迭代。在其他时候，则很难甚至无法确认。
 因此，如果Spock不是仅仅报告失败，而能明确说明哪个迭代失败就更好了，这是@Unroll注释的目的。
 
-### Method Unrolling
+### Method Unrolling [@Unroll 注解方法]
 
 使用@Unroll注解的方法将独立报告其迭代：
 ```groovy
@@ -845,7 +875,7 @@ maximum of 0 and 0 is 0   PASSED
 
 如果想对这部分内容有更多的了解，可以参考 [More on Unrolled Method Names](#more-on-unrolled-method-names)。
 
-### Data Pipes
+### Data Pipes [数据管道]
 
 数据表不是向数据变量提供值的唯一方法。实际上，数据表只是一个或多个数据管道的语法糖：
 ```groovy
@@ -860,7 +890,7 @@ c << [3, 7, 0]
 数据提供者不一定必须是数据（如集合），他们也可以从数据源（如文本文件，数据库和电子表格，或随机生成数据）获取数据。
 数据提供者仅在需要时（在下一次迭代之前）用于查询下一个值。
 
-### Multi-Variable Data Pipes
+### Multi-Variable Data Pipes [多变量数据管道]
 
 如果数据提供者每次迭代返回多个值（Groovy 支持的可迭代对象），它就可以同时连接到多个数据变量。
 语法有点类似于Groovy多重赋值，但需要用中括号替代小括号：
@@ -880,7 +910,7 @@ where:
 [a, b, _, c] << sql.rows("select * from maxdata")
 ```
 
-### Data Variable Assignment
+### Data Variable Assignment [数据变量赋值]
 
 数据变量可以直接赋值：
 ```groovy
@@ -899,7 +929,7 @@ b = row.b
 c = row.c
 ```
 
-### Combining Data Tables, Data Pipes, and Variable Assignments
+### Combining Data Tables, Data Pipes, and Variable Assignments [数据表、数据管道、变量赋值组合]
 
 可以根据需要组合数据表，数据管道和变量分配：
 ```groovy
@@ -914,17 +944,17 @@ b << [5, 0, 0]
 c = a > b ? a : b
 ```
 
-### Number of Iterations
+### Number of Iterations [迭代次数]
 
 迭代次数取决于可用的数据量。连续执行相同的方法可以产生不同数量的迭代。
 如果数据提供者比其使用者更早耗尽值，则会发生异常。
 变量赋值不会影响迭代次数。其中：仅包含赋值的块只产生一次迭代。
 
-### Closing of Data Providers
+### Closing of Data Providers [关闭数据提供者]
 
 完成所有迭代后，将对所有数据提供程序调用零参数close方法。
 
-### More on Unrolled Method Names
+### More on Unrolled Method Names [Unrolled 方法名]
 
 展开的方法名称类似于Groovy GString，但以下区别除外：
 1. 表达式用＃而不是$ 表示，并且${...}语法没有等价物。
@@ -953,7 +983,7 @@ def "#lastName"() { // zero-arg method call
 }
 ```
 
-## Interaction Based Testing 基于交互的测试
+## Interaction Based Testing [基于交互的测试]
 
 基于交互的测试是一种设计和测试技术，在2000年初出现在极限编程（XP）社区中。
 它着眼于对象的行为而不是它们的状态，它探讨了 specification 中的对象如何通过方法调用与其协作者进行交互。
@@ -1000,7 +1030,7 @@ Spock 决定推出自己的模拟框架，与 Spock 的specification 语言紧�
 
 除非另有说明，否则Spock模拟框架的所有功能都可用于测试Java和Groovy代码。
 
-### Creating Mock Objects 创建Mock对象
+### Creating Mock Objects [创建Mock对象]
 
 模拟对象是使用MockingApi.Mock()方法创建的。让我们创建两个模拟订阅者：
 ```groovy
@@ -1022,7 +1052,7 @@ Subscriber subscriber2 = Mock()
 模拟对象实际上实现（或者，在类的情况下，扩展）了它们所代表的类型。换句话说，在示例中，subscriber is-a Subscriber。
 因此，它可以传递给期望此类型的静态类型（Java）代码。
 
-### Default Behavior of Mock Objects
+### Default Behavior of Mock Objects [Mock对象的默认行为]
 
 * Lenient vs. Strict Mocking Frameworks 宽松与严格的模拟框架
 ```md
@@ -1038,7 +1068,7 @@ Object.equals，Object.hashCode和Object.toString方法是一个例外，具有�
 模拟对象仅等于自身，具有唯一的哈希代码，以及一个字符串表示，字符串包含了模拟对象所代表类型的名字。
 通过 stubbing 可以覆盖此默认行为，我们将在[Stubbing](#stubbing)部分中了解这些方法。
 
-### Injecting Mock Objects into Code Under Specification
+### Injecting Mock Objects into Code Under Specification [注入Mock对象]
 
 在创建发布者及其订阅者之后，我们需要让后者为前者所知：
 ```java
@@ -1054,7 +1084,7 @@ class PublisherSpec extends Specification {
 ```
 我们现在准备描述双方之间预期的互动。
 
-### Mocking
+### Mocking [模拟]
 
 模拟是描述 specification 下的对象与其协作者之间（强制）交互的行为。一个例子：
 ```groovy
@@ -1072,7 +1102,7 @@ def "should send messages to all subscribers"() {
 运行此 feature method 时，执行when块时发生的模拟对象上的所有调用都将与then：块中描述的交互进行匹配。
 如果不满足其中一个交互，则抛出InteractionNotSatisfiedError或其子类类型的异常。此验证自动进行，无需任何其他代码。
 
-#### Interactions
+#### Interactions [交互]
 
 * Is an Interaction Just a Regular Method Invocation? 交互只是一个常规的方法调用吗？
 ```md
@@ -1093,7 +1123,7 @@ def "should send messages to all subscribers"() {
 cardinality 基数
 ```
 
-#### Cardinality
+#### Cardinality [交互的基数]
 
 交互的基数描述了预期方法调用的频率。它可以是固定数字或范围：
 ```groovy
@@ -1106,7 +1136,7 @@ _ * subscriber.receive("hello")      // any number of calls, including zero
                                      // (rarely needed; see 'Strict Mocking')
 ```
 
-#### Target Constraint
+#### Target Constraint [目标约束]
 
 交互的目标约束描述了预期哪个模拟对象接收方法调用：
 ```groovy
@@ -1114,7 +1144,7 @@ _ * subscriber.receive("hello")      // any number of calls, including zero
 1 * _.receive("hello")          // a call to any mock object
 ```
 
-#### Method Constraint
+#### Method Constraint [方法约束]
 
 交互的方法约束描述了预期调用哪种方法：
 ```groovy
@@ -1133,7 +1163,7 @@ _ * subscriber.receive("hello")      // any number of calls, including zero
 1 * subscriber.setStatus("ok") // NOT: 1 * subscriber.status = "ok"
 ```
 
-#### Argument Constraints
+#### Argument Constraints [参数约束]
 
 交互的参数约束描述了期望的方法参数：
 ```groovy
@@ -1173,7 +1203,7 @@ subscriber.receive("hello", "goodbye")
 Groovy 允许以不定参数样式调用最后一个参数是数组类型的方法。因此，不定参数语法也可用于匹配此类方法的交互。
 ```
 
-##### Equality Constraint
+##### Equality Constraint [等式约束]
 等式约束使用groovy相等来检查参数，即argument == constraint。
 可以使用以下方式作为一个平等约束：
 ```md
@@ -1188,17 +1218,17 @@ an object 1 * check(new Person('sam')),
 or the result of a method call 1 * check(person())
 ```
 
-##### Hamcrest约束
+##### Hamcrest 约束
 
 是等式约束的变体，如果约束对象是 Hamcrest 匹配器，那么它将使用该匹配器来检查参数。
 
-##### Wildcard Constraint
+##### Wildcard Constraint [通配符约束]
 
 通配符约束将匹配包括 null 在内的任何参数。
 即1 * subscriber.receive（）。
 还有扩展通配符约束* _，它匹配任意数量的参数1 * subscriber.receive（* _），包括没有参数。
 
-##### Code Constraint
+##### Code Constraint [代码约束]
 
 代码约束是最通用的。它是一个groovy闭包，这个闭包 gets the argument as its parameter. 
 闭包被视为条件块，因此它的行为类似于then块，即每一行都被视为隐式断言。
@@ -1215,7 +1245,7 @@ or the result of a method call 1 * check(person())
 })
 ```
 
-##### Negating Constraint
+##### Negating Constraint [否定约束]
 
 否定约束！是一个复合约束，即它需要与另一个约束相结合才能工作。它反转嵌套约束的结果。
 例如，1 * subscriber.receive（！null）是检查null的等式约束的组合，
@@ -1224,13 +1254,13 @@ or the result of a method call 1 * check(person())
 虽然它可以与任何其他约束结合，但它并不总是有意义的，例如，1 * subscriber.receive（！_）将不匹配。
 还要记住，非匹配否定约束的诊断只是内部约束确实匹配，而没有任何更多信息。
 
-##### Type Constraint
+##### Type Constraint [类型约束]
 
 类型约束检查参数的类型/类，它也是复合约束。它通常把 “_ as Type”，它是通配符约束和类型约束的组合。
 你也可以将它与其他约束相结合，1 * subscriber.receive（{it.contains（'foo'）} as String）
 在执行代码约束之前断言它是一个String，以检查它是否包含foo。
 
-#### Matching Any Method Call
+#### Matching Any Method Call [匹配任何方法调用]
 
 在某种意义上，有时候匹配“任何东西”会很有用：
 ```groovy
@@ -1246,7 +1276,7 @@ or the result of a method call 1 * check(person())
  虽然(..)* .(*_) >>_是一个有效的交互声明，但它既不是好的风格，也不是特别有用。
 ```
 
-#### Strict Mocking
+#### Strict Mocking [严格模拟]
  
 什么时候Matching Any Method Call才有用？
 一个很好的例子是严格模拟，除了那些明确声明的交互之外，它不允许任何交互：
@@ -1268,7 +1298,7 @@ _ * 仅在严格模拟的情况下才有意义。特别是，在Stubbing调用�
 例如，_ * auditing.record() >> 'ok'可以（并且应该！）简化为auditing.record() >> 'ok'。
 ```
 
-#### Where to Declare Interactions
+#### Where to Declare Interactions [在哪定义交互]
 
 到目前为止，我们在then：block中声明了所有的交互，通常这样做会使 Specification 更易读。
 但是，实际上也允许将交互放在when：block之前的任何位置。这意味着可以在setup方法中声明交互。
@@ -1291,7 +1321,7 @@ Spock使用简单的语法规则来识别交互：
 他们中的任何一个都必须永远存在，Spock 永远不会将单独的foo.bar() 视为互动。
 ```
 
-#### Declaring Interactions at Mock Creation Time
+#### Declaring Interactions at Mock Creation Time [创建Mock时定义交互]
 
 如果模拟具有一组不变的“基础”交互，则可以在模拟创建时声明它们
 ```groovy
@@ -1313,7 +1343,7 @@ class MySpec extends Specification {
 }
 ```
 
-#### Grouping Interactions with Same Target
+#### Grouping Interactions with Same Target [对相同目标的交互进行分组]
 
 共享相同目标的交互可以在Specification.with块中分组。
 与模拟创建时声明交互类似，这使得不必重复目标约束：
@@ -1325,7 +1355,7 @@ with(subscriber) {
 ```
 with块也可用于对具有相同目标的条件进行分组。
 
-#### Mixing Interactions and Conditions
+#### Mixing Interactions and Conditions [混合 交互与条件]
 
 then块可以包含交互和条件。虽然不是严格要求，但习惯上一般在条件之前声明交互：
 ```groovy
@@ -1338,7 +1368,7 @@ publisher.messageCount == 1
 ```
 大声朗读：“当发布者发送'hello'消息时，订阅者应该只接收一次消息，并且发布者的消息计数应为1”。
 
-#### Explicit Interaction Blocks 显式交互块
+#### Explicit Interaction Blocks [显式交互块]
 
 在内部，Spock必须在有关预期交互发生之前获得其完整信息。
 那么如何在then：block中声明交互呢？
@@ -1373,7 +1403,7 @@ interaction {
 ```
 由于MockingApi.interaction块总是整体移动，因此代码现在可以按预期工作。
 
-#### Scope of Interactions
+#### Scope of Interactions [交互作用范围]
 
 在then：块中声明的交互的作用范围为when：block之前：
 ```groovy
@@ -1396,7 +1426,7 @@ then:
 交互始终作用于特定的feature method。
 因此，它们不能在静态方法，setupSpec方法或cleanupSpec方法中声明。同样，模拟对象不应存储在静态或@Shared字段中。
 
-#### Verification of Interactions
+#### Verification of Interactions [交互的验证]
 
 基于模拟的测试有两种主要方式可以失败：
 交互可以匹配比允许的更多的调用，或者它可以匹配比所需更少的调用。
@@ -1435,7 +1465,7 @@ Unmatched invocations (ordered by similarity):
 1 * subscriber2.receive("hello")
 ```
 
-#### Invocation Order
+#### Invocation Order [调用顺序]
 
 通常，确切的方法调用顺序是相对的，并且可能随时间而变化。
 为避免过度规范，Spock默认允许任何调用顺序，前提是最终满足指定的交互：
@@ -1464,7 +1494,7 @@ then:
 使用and: 拆分then：block 不会强制任何顺序，因为and：仅用于文档目的，不带任何语义。
 ```
 
-#### Mocking Classes
+#### Mocking Classes [模拟类]
 
 除了接口，Spock还支持模拟类。
 模拟类就像模拟接口一样工作，唯一的额外要求是在类路径上放置cglib-nodep-2.2或更高版本以及objenesis-1.2或更高版本。
@@ -1475,7 +1505,7 @@ then:
 CGLIB 从3.2.0开始支持Java 8
 ```
 
-### Stubbing
+### Stubbing [桩]]
 
 Stubbing是让协作者以某种方式响应方法调用的行为。
 在对方法进行stubbing时，你不关心该方法的调用次数和是否被调用。
@@ -1506,7 +1536,7 @@ stubbing 交互可以在then：块内，或者在when：block之前的任何位�
 （有关详细信息，请参阅[Where to Declare Interactions](#where-to-declare-interactions)。）
 如果模拟对象仅用于stubbing，则通常在模拟创建时或given：块中声明交互。
 
-#### Returning Fixed Values
+#### Returning Fixed Values [返回固定值]
 
 我们已经看到使用right-shift（）运算符来返回一个固定值。
 要为不同的调用返回不同的值，请使用多个交互：
@@ -1517,7 +1547,7 @@ subscriber.receive("message2") >> "fail"
 每当收到“message1”时，这将返回“ok”，并且每当收到“message2”时返回“fail”。
 如果它们与方法声明的返回类型兼容，则可以返回哪些值没有限制。
 
-#### Returning Sequences of Values
+#### Returning Sequences of Values [返回值序列]
 
 要在连续调用时返回不同的值，请使用triple-right-shift（）运算符：
 ```groovy
@@ -1526,7 +1556,7 @@ subscriber.receive(_) >>> ["ok", "error", "error", "ok"]
 这将为第一次调用返回'ok'，对第二次和第三次调用返回'error'，对所有剩余的调用返回'ok'。
 右侧必须是Groovy知道如何迭代的值，在这个例子中，我们使用了一个普通的列表。
 
-#### Computing Return Values
+#### Computing Return Values [计算返回值]
 
 要根据方法的参数计算返回值，请使用right-shift（）运算符和闭包。
 如果闭包声明了一个无类型参数，它将传递方法的参数列表：
@@ -1546,7 +1576,7 @@ subscriber.receive(_) >> { String message -> message.size() > 3 ? "ok" : "fail" 
 此接口中声明的所有方法都在闭包内部可用，无需为它们添加前缀。 
 （在Groovy术语中，闭包委托给IMockInvocation的一个实例。）
 
-#### Performing Side Effects
+#### Performing Side Effects [执行的副作用]
 
 有时你可能想做的不仅仅是计算返回值，典型的例子是抛出异常。闭包再次拯救我们：
 ```groovy
@@ -1554,7 +1584,7 @@ subscriber.receive(_) >> { throw new InternalError("ouch") }
 ```
 当然，闭包可以包含更多代码，例如println语句。每次传入调用与交互匹配时都会执行它。
 
-#### Chaining Method Responses
+#### Chaining Method Responses [方法响应链]
 
 方法响应可以链接：
 ```groovy
@@ -1562,7 +1592,7 @@ subscriber.receive(_) >>> ["ok", "fail", "ok"] >> { throw new InternalError() } 
 ```
 这将为前三次调用返回'ok'，'fail'，'ok'，为第四次调用返回InternalError，并为任何进一步的调用返回ok。
 
-### Combining Mocking and Stubbing
+### Combining Mocking and Stubbing [模拟和桩的组合]
 
 Mocking and Stubbing 是相辅相成的
 ```groovy
@@ -1591,12 +1621,12 @@ then:
 同一方法调用的 Mocking and stubbing 必须在同一个交互中进行。
 ```
 
-### Other Kinds of Mock Objects
+### Other Kinds of Mock Objects [其他 Mock 对象]
 
  到目前为止，我们已经使用MockingApi.Mock方法创建了模拟对象。
  除了这个方法之外，MockingApi类还提供了一些其他工厂方法来创建更专业的模拟对象。
 
-#### Stubs
+#### Stubs 
 
 使用MockingApi.Stub工厂方法创建Stubs。
 ```groovy
@@ -1639,7 +1669,7 @@ Subscriber subscriber = Stub {
 SubscriberImpl subscriber = Spy(constructorArgs: ["Fred"])
 ```
 
-#### Partial Mocks
+#### Partial Mocks [部分 Mocks]
 
 （在使用此功能之前请三思。更改规范下的代码设计可能更好。）
 Spies can also be used as partial mocks:
@@ -1676,13 +1706,13 @@ then:
 
 ### Further Reading
 
-## Extensions
+## Extensions [扩展机制]
 
 Spock带有强大的扩展机制，允许 Hook到Specification的生命周期，以丰富或改变其行为。
 在本章中，我们将首先了解Spock的内置扩展，然后深入编写自定义扩展。
 
-### Spock Configuration File
-### Built-In Extensions
+### Spock Configuration File [Spock 配置文件]
+### Built-In Extensions [内建扩展]
 
 Spock的大多数内置扩展都是注解驱动的。换句话说，它们是通过使用特定注解标识spec类或方法触发的。
 可以通过其@ExtensionAnnotation元注解来说明这样的注解。
@@ -1710,7 +1740,7 @@ Spock的大多数内置扩展都是注解驱动的。换句话说，它们是通
 #### Optimize Run Order
 #### Report Log
 
-### Third-Party Extensions
+### Third-Party Extensions [第三方扩展]
 
 参考 [Spock Wiki](https://github.com/spockframework/spock/wiki/Third-Party-Extensions)
 
@@ -1719,14 +1749,14 @@ Spock的大多数内置扩展都是注解驱动的。换句话说，它们是通
 #### Global Extensions
 #### Annotation Driven Local Extensions
 #### Configuration Objects
-#### Interceptors
+#### Interceptors [拦截器]
 
 ![](_pic/spock_interceptors.png)
 
 ## Modules
 ### Guice Module [与Guice IoC容器集成]
 
-### Spring Module 
+### Spring Module  [Spring 模块 ]
 
 Spring模块支持与Spring TestContext Framework集成。
 它支持以下Spring注释 @ContextConfiguration和@ContextHierarchy。
@@ -1743,7 +1773,7 @@ Unitils 是一个开源库，旨在使单元和集成测试变得容易和可维
 例如，如果您需要模拟测试，只需将unitils-mock包含为依赖项。
 如果您还想加载DbUnit数据集，只需包含unitils-dbunit。
 
-### Grails Module 
+### Grails Module [Grails 模块]
 [Grails](https://github.com/grails/grails)
 > A powerful web application framework based on the Groovy language 
 
