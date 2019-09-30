@@ -1,4 +1,5 @@
 # [Spock Framework Reference Documentation](http://spockframework.github.io/spock/docs)
+[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 ```
 Peter Niederwieser, Leonard Brünings, The Spock Framework Team Version 1.3
 ```
