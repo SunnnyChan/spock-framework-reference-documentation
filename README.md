@@ -240,7 +240,7 @@ feature method
 sub.cleanup
 super.cleanup
 sub.cleanupSpec
-super.cleanupSpec
+super.cleanupSpec 
 
 ### Feature Methods [功能方法]
 ```groovy
