@@ -4,7 +4,9 @@
 Peter Niederwieser, Leonard Brünings, The Spock Framework Team Version 1.3
 ```
 
-Table of Contents
+[更好的阅读体验](https://sunnnychan.github.io/spock-framework-reference-documentation/)
+
+Table of Content
 =================
 
    * [<a href="http://spockframework.github.io/spock/docs" rel="nofollow">Spock Framework Reference Documentation</a>](#spock-framework-reference-documentation)
