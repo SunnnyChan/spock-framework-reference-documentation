@@ -1,2 +1,2 @@
-*.sh linguist-language=md
+*.sh linguist-language=java,groovy
 
